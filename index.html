@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soccer Pitch</title>
+    <!-- Link to D3.js library -->
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <!-- Link to d3-soccer plugin -->
+    <script
+      type="text/javascript"
+      src="./node_modules/d3-soccer/dist/d3-soccer.js"
+    ></script>
+    <style>
+      .custom-theme {
+        --background-color: #4b0082;
+        --color: #000;
+        --color-meta: #f3efef;
+        --pitch-line-color: #4b0082;
+        --pitch-shade-color: #4b0082;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TODO! Make Size of the chart bigger -->
+    <!-- TODO! Get football lineup data and map it over the graph acc to its coords. -->
+    <div id="chart" class="custom-theme"></div>
+
+    <script type="text/javascript">
+      // D3 code to create a soccer pitch
+      var pitch = d3.pitch();
+      var svg = d3.select("#chart").call(pitch);
+
+      const layer = svg.select("#above");
+      layer
+        .append("circle")
+        .attr("cx", 0)
+        .attr("cy", 0)
+        .attr("fill", "red")
+        .attr("r", 1);
+      layer
+        .append("text")
+        .attr("x", 2)
+        .attr("y", 2)
+        .attr("alignment-baseline", "hanging")
+        .attr("fill", "black")
+        .style("font-size", "3px")
+        .text("I am the origin at (0, 0)!");
+
+      layer
+        .append("circle")
+        .attr("cx", 105)
+        .attr("cy", 0)
+        .attr("fill", "cyan")
+        .attr("r", 1);
+
+      layer
+        .append("circle")
+        .attr("cx", 0)
+        .attr("cy", 68)
+        .attr("fill", "purple")
+        .attr("r", 1);
+
+      layer
+        .append("circle")
+        .attr("cx", 105)
+        .attr("cy", 68)
+        .attr("fill", "blue")
+        .attr("r", 1);
+      layer
+        .append("text")
+        .attr("x", 103)
+        .attr("y", 66)
+        .attr("text-anchor", "end")
+        .attr("alignment-baseline", "baseline")
+        .attr("fill", "black")
+        .style("font-size", "3px")
+        .text("I am at (105, 68)!");
+
+      layer
+        .append("circle")
+        .attr("cx", 30)
+        .attr("cy", 50)
+        .attr("fill", "gold")
+        .attr("r", 1);
+      layer
+        .append("text")
+        .attr("x", 33)
+        .attr("y", 50)
+        .attr("alignment-baseline", "middle")
+        .attr("fill", "black")
+        .style("font-size", "3px")
+        .text("I am a point on the pitch at (33,50)!");
+    </script>
+  </body>
+</html>
